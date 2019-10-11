@@ -11,19 +11,22 @@ package dispersion;
  */
 public class Alumno {
 
+ //ATRIBUTOS CODIGO, NOMBRE, PENSION
  private int codigoDelAlumno;
  private String nombreDelAlumno;
  private float pensionDelAlumno;
 
+ //CONSTRUCTOR DE ALUMNO
  public Alumno(int codigo, String nombre, float pension) {
   codigoDelAlumno = codigo;
   nombreDelAlumno = nombre;
   pensionDelAlumno = pension;
  }
+ 
+ //GETTERS Y SETTERS
  public void setCodigoDelAlumno(int codigo) {
   codigoDelAlumno = codigo;
  }
-
  public int getCodigoDelAlumno() {
   return codigoDelAlumno;
  }

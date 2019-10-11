@@ -11,23 +11,25 @@ package dispersion;
  */
 public class Instituto {
 
+ //ATRIBUTOS VECTOR DE ALUMNOS DONDE SE ALMACENARAN.
  private Alumno alumnos[];
- private final int TAM_TABLA = 20;
-
+ private final int TAM_TABLA = 20;//NUMERO ARBITRARIO DEFINIDO POR EL PROGRAMADOR
+ 
+//CONSTRUCTOR, LLENA CON 0 Y ESPACIOS VACÍOS CAMPOS DESCONOCIDOS EN TODO EL VECTOR
  public Instituto() {
   alumnos = new Alumno[TAM_TABLA];
   for (int i = 0; i < TAM_TABLA; i++) {
    alumnos[i] = new Alumno(0, "", 0);
   }
  }
-
+ 
+//GETTER Y SETTERS DE CADA ELEMENTO DEL ARREGLO
  public void setCodigoDelAlumno(int codigo, int i) {
   alumnos[i].setCodigoDelAlumno(codigo);
  }
  public int getCodigoDelAlumno(int i) {
   return alumnos[i].getCodigoDelAlumno();
  }
-
  public void setNombreDelAlumno(String nombre, int i) {
   alumnos[i].setNombreDelAlumno(nombre);
  }
@@ -43,6 +45,8 @@ public class Instituto {
  public int getNumeroDeAlumnos() {
   return TAM_TABLA;
  }
+ 
+ //FUNCION HASH POR MODULO DE DIVISION     
  public int hash(int clave) {
   return clave % 19;
  }
@@ -73,15 +77,17 @@ public class Instituto {
     return false;
   }
  }
+ 
+ //BUSCAR POR CODIGO
  public int Buscar(int codigo) {
   int pos, pos_sigte;
-  pos = hash(codigo);
-  if (getCodigoDelAlumno(pos) == codigo)
+  pos = hash(codigo);//GENERA DIRECCION
+  if (getCodigoDelAlumno(pos) == codigo)//VERIFICA SI EL CODIGO ESTÁ EN LA DIRECCION GENERADA
    return pos;
   else //Se produce colisión: Solución por reasignación por prueba lineal
-  {
+  {//EMPIEZA PRUEBA LINEAL
    pos_sigte = pos + 1;
-   while (pos_sigte < getNumeroDeAlumnos() &&
+   while (pos_sigte < getNumeroDeAlumnos() &&//DIRECCION SIGUIENTE MENOR QUE NUMERO DE ALUMNOS
     getCodigoDelAlumno(pos_sigte) != 0 &&
     pos_sigte != pos &&
     getCodigoDelAlumno(pos) != codigo) {
