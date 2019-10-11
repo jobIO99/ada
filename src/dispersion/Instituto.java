@@ -87,11 +87,12 @@ public class Instituto {
   else //Se produce colisión: Solución por reasignación por prueba lineal
   {//EMPIEZA PRUEBA LINEAL
    pos_sigte = pos + 1;
-   while (pos_sigte < getNumeroDeAlumnos() &&//DIRECCION SIGUIENTE MENOR QUE NUMERO DE ALUMNOS
-    getCodigoDelAlumno(pos_sigte) != 0 &&
-    pos_sigte != pos &&
-    getCodigoDelAlumno(pos) != codigo) {
-    pos_sigte++;
+   while (pos_sigte < getNumeroDeAlumnos() &&//DIRECCION SIGUIENTE MENOR QUE TAMAÑO DE TABLA
+    getCodigoDelAlumno(pos_sigte) != 0 &&//CODIGO DE ALUMNO SIGUIENTE DIFERENTE 0
+    pos_sigte != pos &&//DIRECCION DEL SIGUIENTE DIFERENTE AL INICIAL
+    getCodigoDelAlumno(pos) != codigo//CODIGO DEL ALUMNO EN DICHA DIRECCION DIFERENTE DEL COIDGO A BUSCAR
+           ) {
+    pos_sigte++;        
     if (pos_sigte == getNumeroDeAlumnos())
      pos_sigte = 0;
    }
